@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Lemur</title>
+  <link rel="manifest" href="/manifest.json">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link rel="stylesheet" href="https://pyscript.net/releases/2024.6.1/core.css">
+  <script type="module" src="https://pyscript.net/releases/2024.6.1/core.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.1/cdn/themes/light.css"/>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.1/cdn/shoelace.js"></script>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body class="flex flex-col min-safe-h-screen">
+<div id="app" class="flex flex-col flex-grow">
+  <div style="text-align: center; height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <sl-spinner style="font-size: 50px; --track-width: 10px;"></sl-spinner>
+  </div>
+</div>
+<script type="py" src="./lemur/main.py" config="./pyscript-config.toml"></script>
+</body>
+</html>

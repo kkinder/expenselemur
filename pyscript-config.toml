@@ -1,0 +1,11 @@
+name = "Expense Lemur"
+debug = true
+packages = ["puepy-0.3.0-py3-none-any.whl", "sqlite3"]
+
+[files]
+"./lemur/__init__.py" = "lemur/__init__.py"
+"./lemur/expensedb.py" = "lemur/expensedb.py"
+"./lemur/main.py" = "lemur/main.py"
+
+[js_modules.main]
+"https://cdn.jsdelivr.net/npm/morphdom@2.7.2/+esm" = "morphdom"
