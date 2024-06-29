@@ -156,6 +156,7 @@ class DefaultPage(Page):
             self.populate_clear_all_dialog()
             self.populate_export_dialog()
             self.populate_import_dialog()
+            self.populate_about_dialog()
 
     def on_delete_click(self, event):
         db.expense.delete(id=event.currentTarget.getAttribute("data-id"))
@@ -168,6 +169,10 @@ class DefaultPage(Page):
             self.export_csv_file()
         elif event.detail.item.value == "import":
             self.refs["import_dialog"].element.show()
+        elif event.detail.item.value == "about":
+            self.refs["about_dialog"].element.show()
+        else:
+            print(f"Unknown menu item: {event.detail.item.value}")
 
     ##
     ## Add Item Drawer and Events
@@ -335,6 +340,40 @@ class DefaultPage(Page):
         self.state["export_url"] = js.URL.createObjectURL(blob)
 
         self.refs["export_dialog"].element.show()
+
+    ##
+    ## About Dialog and events
+    ##
+    def populate_about_dialog(self):
+        with t.sl_dialog(ref="about_dialog", label="Expense Lemur"):
+            t.p("© Copyright 2024 Ken Kinder", classes="mb-4")
+            t.div(
+                """Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except 
+            in compliance with the License. You may obtain a copy of the License at""",
+                classes="mb-4",
+            )
+            t.p(
+                t.a("http://www.apache.org/licenses/LICENSE-2.0", href="http://www.apache.org/licenses/LICENSE-2.0"),
+                classes="mb-4 text-blue-500 hover:text-blue-700 underline",
+            )
+            t.p(
+                "Unless required by applicable law or agreed to in writing, software distributed under the License is"
+                ' distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or'
+                " implied. See the License for the specific language governing permissions and limitations under"
+                " the License.",
+                classes="mb-4",
+            )
+            t.hr(classes="mb-4")
+            t.p(
+                "Expense Lemur is a simple app to track expenses between friends. It's a demo of ",
+                t.a("PeuPy", href="https://puepy.dev/", classes="text-blue-500 hover:text-blue-700 underline"),
+                " -- the reactive frontend framework for Python. See ",
+                t.a(
+                    "github.com/kkinder/expenselemur",
+                    href="https://github.com/kkinder/expenselemur",
+                    classes="text-blue-500 hover:text-blue-700 underline",
+                ),
+            )
 
 
 if not is_server_side:
